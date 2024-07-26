@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch, ref, onMounted } from "vue";
 
-import { drawSticks, drawLines, isStarted } from "@/utils/draw";
+import { drawSticks, drawLines, isStarted } from "@/utils";
 
 const props = defineProps<{
     radiusRatio: number,
@@ -14,10 +14,10 @@ const size = {
     height: 400,
 }
 
-const linesRef = ref(null);
-const sticksRef = ref(null);
-const linesCtx = ref(null);
-const sticksCtx = ref(null);
+const linesRef = ref<any | null>(null);
+const sticksRef = ref<any | null>(null);
+const linesCtx = ref<any | null>(null);
+const sticksCtx = ref<any | null>(null);
 
 onMounted(() => {
     linesCtx.value = linesRef.value.getContext('2d');
