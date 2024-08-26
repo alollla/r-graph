@@ -14,10 +14,30 @@ const toggle = () => {
             <button :disabled="isStarted" @click="toggle">Start</button>
             <button :disabled="!isStarted" @click="toggle">Stop</button>
         </div>
-        <label for="radius" title="0 - 1">Radius ratio:</label>
-        <input type="number" id="radius" min="0" max="1" v-model="radiusRatio" step="0.05" />
-        <label for="speed" title="0 - 10">Speed ratio:</label>
-        <input type="number" id="speed" min="0" max="10" v-model="speedRatio" step="0.01" />
+        <div class="settings__item">
+            <label for="radius" title="0 - 1">Radius ratio:</label>
+            <input type="range" min="0" max="1" v-model="radiusRatio" step="0.05" list="radius-markers" />
+            <input type="number" id="radius" min="0" max="1" v-model="radiusRatio" step="0.05" />
+        </div>
+        <div class="settings__item">
+            <label for="speed" title="0 - 10">Speed ratio:</label>
+            <input type="range" min="0" max="10" v-model="speedRatio" step="0.01" list="speed-markers" />
+            <input type="number" id="speed" min="0" max="10" v-model="speedRatio" step="0.01" />
+        </div>
+        <a href="https://github.com/alollla/r-graph">Source</a>
+
+        <datalist id="radius-markers">
+            <option value="0"></option>
+            <option value="0.25"></option>
+            <option value="0.5"></option>
+            <option value="0.75"></option>
+            <option value="1"></option>
+        </datalist>
+        <datalist id="speed-markers">
+            <option value="0"></option>
+            <option value="5"></option>
+            <option value="10"></option>
+        </datalist>
     </div>
 </template>
 
@@ -25,7 +45,20 @@ const toggle = () => {
 .settings {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+
+    a {
+        text-align: center;
+    }
+}
+
+.settings__item {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        display: block;
+    }
 }
 
 .buttons {
